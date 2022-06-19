@@ -4,3 +4,13 @@
     align-items: center;
     margin: auto;
 }
+
+.bmenu{
+    display: flex;
+    align-items: stretch;
+}
+
+.mb{
+    flex: 1;
+    background-color: transparent;
+}

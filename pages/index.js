@@ -22,14 +22,16 @@ export default function Home() {
           opened={opened}
           onClose={() => setOpened(false)}
           styles={{
-            drawer: {backgroundColor:'#252741',color:'aliceblue'},
+            drawer: { backgroundColor: '#252741', color: 'aliceblue' },
           }}
           title="Menu"
           padding="xl"
           size='20%'
         >
           {
-            <Button onClick={() => router.push('/do-list',undefined,{shallow: true})} className={bstyles.bmenu}>To-do List</Button>
+            <div className={bstyles.bmenu}>
+              <Button onClick={() => router.push('/do-list', undefined, { shallow: true })} className={bstyles.mb}>To-do List</Button>
+            </div>
           }
         </Drawer>
         <Button onClick={() => setOpened(true)} className={bstyles.sus}>Open Menu</Button>
