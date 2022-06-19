@@ -32,7 +32,7 @@ export default function Home() {
             <Button onClick={() => router.push('/do-list',undefined,{shallow: true})} className={bstyles.bmenu}>To-do List</Button>
           }
         </Drawer>
-        <Button onClick={() => setOpened(true)} className={bstyles.sus}>Open Drawer</Button>
+        <Button onClick={() => setOpened(true)} className={bstyles.sus}>Open Menu</Button>
       </main>
     </div>
   )
