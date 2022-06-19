@@ -1,0 +1,46 @@
+.main {
+    min-height: 100vh;
+    padding: 2rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin: 0;
+    font-family: Georgia, serif;
+    line-height: 1.15;
+    font-size: 3rem;
+    color: aliceblue;
+    text-align: center;
+}
+
+.table {
+    border: 1px;
+    border-style: solid;
+    border-radius: 16px;
+    border-color: whitesmoke;
+    background-color: #1e1f34;
+    flex: 1;
+    margin: 1%;
+}
+
+.list_container {
+    min-height: fit-content;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.ltitle {
+    margin: 0;
+    color: aliceblue;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .grid {
+        width: 100%;
+        flex-direction: column;
+    }
+}
