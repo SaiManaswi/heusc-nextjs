@@ -1,8 +1,7 @@
 .sus{
-    background-color: rgb(105, 35, 35);
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+    background-color: transparent;
+    min-width: 50px;
+    min-height: 50px;
 }
 
 .bmenu{

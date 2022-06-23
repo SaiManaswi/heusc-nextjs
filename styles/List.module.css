@@ -23,6 +23,8 @@
     background-color: #1e1f34;
     flex: 1;
     margin: 1%;
+    color: aliceblue;
+    text-align: center;
 }
 
 .list_container {
@@ -32,10 +34,21 @@
     flex-direction: row;
 }
 
-.ltitle {
-    margin: 0;
-    color: aliceblue;
-    text-align: center;
+.point{
+    background-color: rgb(35, 63, 135);
+    border-radius: 16px;
+    margin: 2%;
+    display: flex;
+}
+
+.ctitle{
+    margin: 0px;
+    flex: 1;
+}
+
+.crm{
+    background-color: transparent;
+    border-radius: 16px;
 }
 
 @media (max-width: 600px) {

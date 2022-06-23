@@ -4,10 +4,10 @@ import bstyles from '../styles/Button.module.css'
 import { useState } from 'react';
 import { Drawer, Button, Group } from '@mantine/core';
 import { useRouter } from 'next/router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 export default function Home() {
-  const router = useRouter()
-  const [opened, setOpened] = useState(false);
   return (
     <div className={styles.container}>
       <Head>
@@ -15,27 +15,34 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to HEUSC
-        </h1>
-        <Drawer
-          opened={opened}
-          onClose={() => setOpened(false)}
-          styles={{
-            drawer: { backgroundColor: '#252741', color: 'aliceblue' },
-          }}
-          title="Menu"
-          padding="xl"
-          size='20%'
-        >
-          {
-            <div className={bstyles.bmenu}>
-              <Button onClick={() => router.push('/do-list', undefined, { shallow: true })} className={bstyles.mb}>To-do List</Button>
-            </div>
-          }
-        </Drawer>
-        <Button onClick={() => setOpened(true)} className={bstyles.sus}>Open Menu</Button>
+        <CNavBar/>
       </main>
     </div>
+  )
+}
+export function CNavBar() {
+  const [opened, setOpened] = useState(false);
+  const router = useRouter()
+  return (
+    <div>
+      <Drawer
+        opened={opened}
+        onClose={() => setOpened(false)}
+        styles={{
+          drawer: { backgroundColor: '#39256a', color: 'aliceblue' },
+        }}
+        title="Menu"
+        padding="xl"
+        size='20%'
+      >
+        {
+          <div className={bstyles.bmenu}>
+            <Button onClick={() => router.push('/do-list', undefined, { shallow: true })} className={bstyles.mb}>To-do List</Button>
+          </div>
+        }
+      </Drawer>
+      <Button onClick={() => setOpened(true)} className={bstyles.sus}><FontAwesomeIcon icon={faBars} size='2x' /></Button>
+    </div>
+
   )
 }
