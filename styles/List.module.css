@@ -51,6 +51,13 @@
     border-radius: 16px;
 }
 
+.editb{
+    background: transparent;
+    padding: 0px;
+}
+.editb:hover{
+    background: transparent;
+}
 @media (max-width: 600px) {
     .grid {
         width: 100%;

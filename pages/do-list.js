@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import mstyle from '../styles/List.module.css'
 import { CNavBar } from './index.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faXmark,faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 
 export default function list() {
@@ -29,26 +29,36 @@ export default function list() {
     )
 }
 function New_colum(props) {
-    const [inputList, setInputList] = useState([]);
+    var time = new Date();
+    const [inputList, setInputList] = useState([{title: "Hello",index: 0}]);
 
-    const AddClick = (event) => {
-        setInputList(inputList.concat(<Points key={inputList.length}/>));
+    function AddClick() {
+        let new_point = {title: "hi",index: time.valueOf()}
+        setInputList(inputList.concat(new_point))
         console.log(inputList)
     };
+    function RemovePoint(point) {
+        const new_list = inputList.filter((e)=>{
+            return e.index !== parseInt(point.currentTarget.id);
+        });
+        setInputList(new_list);
+    }
     return (
         <div className={mstyle.table}>
             <h2>{props.title}</h2>
-            <Points />
-            {inputList}
+            {
+                inputList.map((points) => {
+                    return (
+                        <div className={mstyle.point} key={points.index}>
+                            <h2 className={mstyle.ctitle} onClick={(e) => console.log(points)}>{points.title}</h2>
+                            <Button className={mstyle.editb} onClick={(e) => console.log(e.currentTarget.value)} value={points.title + "Edit"}><FontAwesomeIcon icon={faPenToSquare} /></Button>
+                            <Button className={mstyle.crm} onClick={RemovePoint} id={points.index}><FontAwesomeIcon icon={faXmark} /></Button>
+                        </div>
+                    )
+                })
+            }
             <Button onClick={AddClick}><FontAwesomeIcon icon={faPlus} size='2x' /></Button>
         </div>
     )
-    function Points() {
-        return (
-            <div className={mstyle.point}>
-                <h2 className={mstyle.ctitle}>Hello</h2>
-                <Button className={mstyle.crm} onClick={AddClick}><FontAwesomeIcon icon={faXmark} /></Button>
-            </div>
-        )
-    }
+
 }
