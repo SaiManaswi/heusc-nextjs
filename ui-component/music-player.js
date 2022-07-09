@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react';
 export default function Music_player() {
     const [isplaying, Setisplaying] = useState(false)
     const trigger = () => Setisplaying(!isplaying)
-    const audio = new Audio("1.mp3")
+    const audio = new Audio(`https://s2.naasongs.download/teqc69oze1zawc/Salute%20-%20%282008%29/%5BiSongs.info%5D%2002%20-%20Ninnena%20Nenu.mp3`)
     const ytdl = require('ytdl-core')
     useEffect(() => {
         isplaying ? audio.play() : audio.pause();
