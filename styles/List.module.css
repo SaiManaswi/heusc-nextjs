@@ -34,30 +34,46 @@
     flex-direction: row;
 }
 
-.point{
+.point {
     background-color: rgb(35, 63, 135);
     border-radius: 16px;
     margin: 2%;
     display: flex;
+
 }
 
-.ctitle{
+.ctitle {
     margin: 0px;
     flex: 1;
+    cursor: move;
 }
 
-.crm{
+.edititle {
+    margin: 0px;
+    flex: 1;
+    border-radius: 16px;
+    background-color: transparent;
+    border: 0px;
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: aliceblue;
+    text-align: center;
+}
+
+.crm {
     background-color: transparent;
     border-radius: 16px;
 }
 
-.editb{
+.editb {
     background: transparent;
     padding: 0px;
 }
-.editb:hover{
+
+.editb:hover {
     background: transparent;
 }
+
 @media (max-width: 600px) {
     .grid {
         width: 100%;

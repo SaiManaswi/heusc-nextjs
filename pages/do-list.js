@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import mstyle from '../styles/List.module.css'
 import { CNavBar } from './index.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faXmark,faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 
 export default function list() {
@@ -30,29 +30,50 @@ export default function list() {
 }
 function New_colum(props) {
     var time = new Date();
-    const [inputList, setInputList] = useState([{title: "Hello",index: 0}]);
-
+    const [inputList, setInputList] = useState([{ title: "First Point", index: 0, editable: false }]);
+    
     function AddClick() {
-        let new_point = {title: "hi",index: time.valueOf()}
+        let new_point = { title: "New Point", index: time.valueOf(), editable: false }
         setInputList(inputList.concat(new_point))
         console.log(inputList)
     };
-    function RemovePoint(point) {
-        const new_list = inputList.filter((e)=>{
-            return e.index !== parseInt(point.currentTarget.id);
-        });
-        setInputList(new_list);
-    }
     return (
         <div className={mstyle.table}>
             <h2>{props.title}</h2>
             {
                 inputList.map((points) => {
                     return (
-                        <div className={mstyle.point} key={points.index}>
-                            <h2 className={mstyle.ctitle} onClick={(e) => console.log(points)}>{points.title}</h2>
-                            <Button className={mstyle.editb} onClick={(e) => console.log(e.currentTarget.value)} value={points.title + "Edit"}><FontAwesomeIcon icon={faPenToSquare} /></Button>
-                            <Button className={mstyle.crm} onClick={RemovePoint} id={points.index}><FontAwesomeIcon icon={faXmark} /></Button>
+                        <div className={mstyle.point} draggable key={points.index}>
+                            {
+                                points.editable ? (
+                                    <input className={mstyle.edititle} defaultValue={points.title} onBlur={(new_content) => {
+                                        setInputList(inputList.filter(e => {
+                                            if (e.index === points.index) {
+                                                e.title = new_content.currentTarget.value
+                                                e.editable = false
+                                            }
+                                            return e
+                                        }))
+                                    }}></input>) :
+                                    (
+                                        <>
+                                            <h2 className={mstyle.ctitle}>{points.title}</h2>
+                                            <Button className={mstyle.editb} onClick={() => {
+                                                setInputList(inputList.filter(e => {
+                                                    if (e.index === points.index) {
+                                                        e.editable = true
+                                                    }
+                                                    return e
+                                                }))
+                                            }}><FontAwesomeIcon icon={faPenToSquare} /></Button>
+                                        </>
+                                    )
+                            }
+                            <Button className={mstyle.crm} onClick={() => {
+                                setInputList(inputList.filter((e) => {
+                                    return e.index !== parseInt(points.index);
+                                }));
+                            }}><FontAwesomeIcon icon={faXmark} /></Button>
                         </div>
                     )
                 })

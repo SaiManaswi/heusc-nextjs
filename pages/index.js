@@ -6,6 +6,7 @@ import { Drawer, Button, Group } from '@mantine/core';
 import { useRouter } from 'next/router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Music_player from '../ui-component/music-player'
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <CNavBar/>
+        <CNavBar />
       </main>
     </div>
   )
@@ -36,9 +37,12 @@ export function CNavBar() {
         size='20%'
       >
         {
-          <div className={bstyles.bmenu}>
-            <Button onClick={() => router.push('/do-list', undefined, { shallow: true })} className={bstyles.mb}>To-do List</Button>
-          </div>
+          <>
+            <Music_player />
+            <div className={bstyles.bmenu}>
+              <Button onClick={() => router.push('/do-list', undefined, { shallow: true })} className={bstyles.mb}>To-do List</Button>
+            </div>
+          </>
         }
       </Drawer>
       <Button onClick={() => setOpened(true)} className={bstyles.sus}><FontAwesomeIcon icon={faBars} size='2x' /></Button>
