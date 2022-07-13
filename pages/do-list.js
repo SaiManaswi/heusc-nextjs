@@ -2,19 +2,18 @@ import Head from 'next/head'
 import { Button } from '@mantine/core'
 import styles from '../styles/Home.module.css'
 import mstyle from '../styles/List.module.css'
-import { CNavBar } from './index.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 
-export default function list() {
+export default function list({children}) {
     return (
         <div className={styles.container}>
             <Head>
                 <title>To-Do List</title>
             </Head>
             <main className={mstyle.main}>
-                <CNavBar />
+                {children}
                 <h1 className={mstyle.title}>
                     To-do List
                 </h1>
@@ -54,7 +53,7 @@ function New_colum(props) {
                                             }
                                             return e
                                         }))
-                                    }}></input>) :
+                                    }} autoFocus></input>) :
                                     (
                                         <>
                                             <h2 className={mstyle.ctitle}>{points.title}</h2>
