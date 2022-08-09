@@ -12,7 +12,7 @@ class CNavBar extends React.PureComponent{
     console.log("Nav Bar Rendered")
     super(props);
     this.state = {opened : false};
-    this.audio = new Audio('https://s2.naasongs.download/teqc69oze1zawc/Salute%20-%20%282008%29/%5BiSongs.info%5D%2002%20-%20Ninnena%20Nenu.mp3')
+    this.audio = new Audio('https://s2.naasongs.download/teqc69oze1zawc/Salute%20-%20%282008%29/%5BiSongs.info%5D%2002%20-%20Ninnena%20Nenu.mp3');
   }
 
   render(){
@@ -22,11 +22,11 @@ class CNavBar extends React.PureComponent{
         opened={this.state.opened}
         onClose={() => this.setState({opened : false})}
         styles={{
-          drawer: { backgroundColor: '#39256a', color: 'aliceblue' },
+          drawer: { backgroundColor: '#162B62', color: 'aliceblue' },
         }}
         title="Menu"
         padding="xl"
-        size='20%'
+        size='15%'
       >
         {
           <>

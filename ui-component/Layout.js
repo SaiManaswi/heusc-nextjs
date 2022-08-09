@@ -5,11 +5,8 @@ const Layout = ({ children }) => {
     return (
         <>
             <div className={styles.container}>
-                <main className={styles.main}>
-                    <CNavBar />
-                    {children}
-                    <h2>Hello</h2>
-                </main>
+                <CNavBar />
+                {children}
             </div>
         </>
     )

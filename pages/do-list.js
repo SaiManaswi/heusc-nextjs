@@ -1,19 +1,17 @@
 import Head from 'next/head'
 import { Button } from '@mantine/core'
-import styles from '../styles/Home.module.css'
 import mstyle from '../styles/List.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 
-export default function list({children}) {
+export default function list(props) {
     return (
-        <div className={styles.container}>
+        <>
             <Head>
                 <title>To-Do List</title>
             </Head>
             <main className={mstyle.main}>
-                {children}
                 <h1 className={mstyle.title}>
                     To-do List
                 </h1>
@@ -23,14 +21,13 @@ export default function list({children}) {
                     <New_colum title='Completed' />
                 </div>
             </main>
-
-        </div>
+        </>
     )
 }
 function New_colum(props) {
     var time = new Date();
     const [inputList, setInputList] = useState([{ title: "First Point", index: 0, editable: false }]);
-    
+
     function AddClick() {
         let new_point = { title: "New Point", index: time.valueOf(), editable: false }
         setInputList(inputList.concat(new_point))

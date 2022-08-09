@@ -1,12 +1,13 @@
 import '../styles/globals.css'
-import CNavBar from '../ui-component/CNavBar'
-
+import Layout from '../ui-component/Layout.js'
 
 function MyApp({ Component, pageProps }) {
   return (
-        <Component {...pageProps}>
-          <CNavBar/>
-        </Component>
+    <>
+      <Layout>
+        <Component {...pageProps}/>
+      </Layout>
+    </>
   )
 }
 

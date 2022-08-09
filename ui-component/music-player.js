@@ -6,14 +6,23 @@ class Music_player extends React.PureComponent {
         console.log("Music Rendered");
         super(props);
         this.audio = props.audiosource
+        this.state ={
+            status: this.audio.paused? "Play" : "Pause"
+        }
     }
-
     render() {
         return (
             <div className={player.main}>
-                <Button onClick={() => this.audio.play()}>Play</Button>
-                <Button onClick={() => this.audio.pause()}>Pause</Button>
-                <Button onClick={() => console.log(this.audio.currentTime)}>currentTime</Button>
+                <Button onClick={() => {
+                    if (this.audio.paused) {
+                        this.audio.play()
+                        this.setState({status: "Pause"})
+                    }
+                    else{
+                        this.audio.pause()
+                        this.setState({status: "Play"})
+                    }
+                }}>{this.state.status}</Button>
             </div>
         )
     }

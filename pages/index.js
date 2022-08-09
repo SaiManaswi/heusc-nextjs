@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home({children}) {
+export default function Home(props) {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>HEUSC App</title>
       </Head>
-      <main className={styles.main}>
-        {children}
+      <main>
+        <h1>Hello</h1>
       </main>
-    </div>
+    </>
   )
 }
