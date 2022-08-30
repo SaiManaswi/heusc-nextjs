@@ -7,7 +7,7 @@ import io from 'socket.io-client'
 let socket;
 
 var pos = 0
-function monopoly(props) {
+function Monopoly(props) {
     useEffect(()=> {socketstart();},[])
     const socketstart = async()=>{
         await fetch('/api/socket')
@@ -142,4 +142,4 @@ function Edge(props){
         </mesh>
     )
 }
-export default monopoly;
+export default Monopoly;
