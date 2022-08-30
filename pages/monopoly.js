@@ -56,7 +56,7 @@ function Vedge(props) {
             box.push(
                 <mesh position={[index, props.position[1], props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                     <boxGeometry args={[1, 1.75, 0.3]} />
-                    <meshStandardMaterial color={pos==(65-(props.cid + index))? "rgb(36, 36, 36)":new Color('white')} map={useLoader(TextureLoader,'/1.jpg')}/>
+                    <meshStandardMaterial color={pos==(65-(props.cid + index))? "rgb(36, 36, 36)":new Color(props.texture)}/>
                 </mesh>
             )
         }
