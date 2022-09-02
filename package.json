@@ -1,4 +1,8 @@
 {
+  "cacheDirectories": [
+    "node_modules/",
+    ".next/cache/"
+  ],
   "name": "heusc-app",
   "version": "0.1.0",
   "private": true,
