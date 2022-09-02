@@ -5,7 +5,9 @@
   ],
   "name": "heusc-app",
   "version": "0.1.0",
-  "private": true,
+  "engines": {
+    "node": "16.15.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
