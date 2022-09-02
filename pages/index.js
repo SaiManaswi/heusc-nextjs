@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
-import io from 'Socket.IO-client'
-let socket;
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
 
-const Home = () => {
+export default function Home(props) {
   const [input, setInput] = useState('')
 
   useEffect(() => {socketInitializer()}, [])
@@ -24,14 +23,14 @@ const Home = () => {
     setInput(e.target.value)
     socket.emit('input-change', e.target.value)
   }
-
   return (
-    <input
-      placeholder="Type something"
-      value={input}
-      onChange={onChangeHandler}
-    />
+    <>
+      <Head>
+        <title>HEUSC App</title>
+      </Head>
+      <main>
+        <h1>Hello</h1>
+      </main>
+    </>
   )
 }
-
-export default Home;
