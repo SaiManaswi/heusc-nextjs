@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import { useState } from 'react'
-import styles from '../styles/Home.module.css'
+import { useState,useEffect } from 'react'
+import io from 'socket.io-client'
+let socket;
 
 export default function Home(props) {
   const [input, setInput] = useState('')
@@ -25,13 +26,10 @@ export default function Home(props) {
     socket.emit('input-change', e.target.value)
   }
   return (
-    <>
-      <Head>
-        <title>HEUSC App</title>
-      </Head>
-      <main>
-        <h1>Hello</h1>
-      </main>
-    </>
+    <input
+      placeholder="Type something"
+      value={input}
+      onChange={onChangeHandler}
+    />
   )
 }
