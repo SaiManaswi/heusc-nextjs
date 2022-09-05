@@ -12,6 +12,9 @@ const SocketHandler = (req, res) => {
       socket.on('input-change', msg => {
         socket.broadcast.emit('update-input', msg)
       })
+      socket.on('position', pos =>{
+        socket.broadcast.emit('newpos', pos + 1)
+      })
     })
   }
   res.end()

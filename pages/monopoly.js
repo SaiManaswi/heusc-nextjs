@@ -15,13 +15,13 @@ function Monopoly(props) {
         socket.on('connect',()=>{
             console.log("connected")
         })
-        socket.on('setpos', e =>{
+        socket.on('newpos', e =>{
             pos = e
             setState({})
         })
     }
     const update=()=>{
-        socket.emit('player_move',pos)
+        socket.emit('position',pos)
     }
     const [,setState] = useState()
     return (
