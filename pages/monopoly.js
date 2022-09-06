@@ -6,8 +6,9 @@ import {Button} from '@mantine/core';
 import io from 'socket.io-client'
 let socket;
 
-var pos = 0
 function Monopoly(props) {
+    const [pos,setState] = useState(0)
+
     useEffect(()=> {socketstart();},[])
     const socketstart = async()=>{
         await fetch('/api/socket')
@@ -16,14 +17,12 @@ function Monopoly(props) {
             console.log("connected")
         })
         socket.on('newpos', e =>{
-            pos = e
-            setState({})
+            setState(e)
         })
     }
     const update=()=>{
         socket.emit('position',pos)
     }
-    const [,setState] = useState()
     return (
         <div id="canvas-container" style={{ height: '600px' }}>
             <Canvas camera={{ position: [5, 5, 7] }}>
@@ -34,14 +33,14 @@ function Monopoly(props) {
                     <boxGeometry args={[9, 9, 0.3]} />
                     <meshStandardMaterial color={"#cde6d0"}/>
                 </mesh>
-                <Edge cid={0} position={[-5.375,-5.375,0]}/>
-                <Edge cid={10} position={[-5.375,5.375,0]}/>
-                <Edge cid={20} position={[5.375,5.375,0]}/>
-                <Edge cid={30} position={[5.375,-5.375,0]}/>
-                <Hedge position={[-5.375, 0, 0]} texture={'yellow'} cid={0} rotation={false}/>
-                <Vedge position={[0, 5.375, 0]} texture={'blue'} cid={10} rotation={false}/>
-                <Hedge position={[5.375, 0, 0]} texture={'red'} cid={20} rotation={true}/>
-                <Vedge position={[0, -5.375, 0]} texture={'green'} cid={30} rotation={true}/>
+                <Edge cid={0} position={[-5.375,-5.375,0]} pos={pos}/>
+                <Edge cid={10} position={[-5.375,5.375,0]} pos={pos}/>
+                <Edge cid={20} position={[5.375,5.375,0]} pos={pos}/>
+                <Edge cid={30} position={[5.375,-5.375,0]} pos={pos}/>
+                <Hedge position={[-5.375, 0, 0]} texture={'yellow'} cid={0} rotation={false} pos={pos}/>
+                <Vedge position={[0, 5.375, 0]} texture={'blue'} cid={10} rotation={false} pos={pos}/>
+                <Hedge position={[5.375, 0, 0]} texture={'red'} cid={20} rotation={true} pos={pos}/>
+                <Vedge position={[0, -5.375, 0]} texture={'green'} cid={30} rotation={true} pos={pos}/>
                 
             </Canvas>
             <Button onClick={update}>Click</Button>
@@ -56,7 +55,7 @@ function Vedge(props) {
             box.push(
                 <mesh position={[index, props.position[1], props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                     <boxGeometry args={[1, 1.75, 0.3]} />
-                    <meshStandardMaterial color={pos==(65-(props.cid + index))? "rgb(36, 36, 36)":new Color(props.texture)}/>
+                    <meshStandardMaterial color={props.pos==(65-(props.cid + index))? "rgb(36, 36, 36)":new Color(props.texture)}/>
                 </mesh>
             )
         }
@@ -64,7 +63,7 @@ function Vedge(props) {
             box.push(
                 <mesh position={[-index, props.position[1], props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                     <boxGeometry args={[1, 1.75, 0.3]} />
-                    <meshStandardMaterial color={pos==(props.cid + index + 5)? "rgb(36, 36, 36)":new Color(props.texture)}/>
+                    <meshStandardMaterial color={props.pos==(props.cid + index + 5)? "rgb(36, 36, 36)":new Color(props.texture)}/>
                 </mesh>
             )
         }
@@ -74,7 +73,7 @@ function Vedge(props) {
             box.push(
                 <mesh position={[index, props.position[1], props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                     <boxGeometry args={[1, 1.75, 0.3]} />
-                    <meshStandardMaterial color={pos==(props.cid + index + 5)? "rgb(36, 36, 36)":new Color(props.texture)}/>
+                    <meshStandardMaterial color={props.pos==(props.cid + index + 5)? "rgb(36, 36, 36)":new Color(props.texture)}/>
                 </mesh>
             )
         }
@@ -82,7 +81,7 @@ function Vedge(props) {
             box.push(
                 <mesh position={[-index, props.position[1], props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                     <boxGeometry args={[1, 1.75, 0.3]} />
-                    <meshStandardMaterial color={pos==(25-(props.cid + index))? "rgb(36, 36, 36)":new Color(props.texture)}/>
+                    <meshStandardMaterial color={props.pos==(25-(props.cid + index))? "rgb(36, 36, 36)":new Color(props.texture)}/>
                 </mesh>
             )
         }
@@ -98,7 +97,7 @@ function Hedge(props) {
             box.push(
                 <mesh position={[props.position[0], -index, props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                     <boxGeometry args={[1.75, 1, 0.3]} />
-                    <meshStandardMaterial color={new Color(pos==(props.cid + index + 5)?"rgb(36, 36, 36)":props.texture)}/>
+                    <meshStandardMaterial color={new Color(props.pos==(props.cid + index + 5)?"rgb(36, 36, 36)":props.texture)}/>
                 </mesh>
             )
         }
@@ -106,7 +105,7 @@ function Hedge(props) {
             box.push(
                 <mesh position={[props.position[0], index, props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                     <boxGeometry args={[1.75, 1, 0.3]} />
-                    <meshStandardMaterial color={new Color(pos==(46-(props.cid + index + 1))? "rgb(36, 36, 36)":props.texture)}/>
+                    <meshStandardMaterial color={new Color(props.pos==(46-(props.cid + index + 1))? "rgb(36, 36, 36)":props.texture)}/>
                 </mesh>
             )
         }
@@ -116,7 +115,7 @@ function Hedge(props) {
             box.push(
                 <mesh position={[props.position[0], index, props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                 <boxGeometry args={[1.75, 1, 0.3]} />
-                <meshStandardMaterial color={new Color(pos==(props.cid + index + 5)? "rgb(36, 36, 36)":props.texture)}/>
+                <meshStandardMaterial color={new Color(props.pos==(props.cid + index + 5)? "rgb(36, 36, 36)":props.texture)}/>
             </mesh>
         )
     }
@@ -124,7 +123,7 @@ function Hedge(props) {
         box.push(
             <mesh position={[props.position[0], -index, props.position[2]]} onClick={(e) => console.log(e.eventObject.position)}>
                 <boxGeometry args={[1.75, 1, 0.3]} />
-                <meshStandardMaterial color={new Color(pos==(5-(props.cid + index))?"rgb(36, 36, 36)":props.texture)}/>
+                <meshStandardMaterial color={new Color(props.pos==(5-(props.cid + index))?"rgb(36, 36, 36)":props.texture)}/>
             </mesh>
         )
     }
@@ -138,7 +137,7 @@ function Edge(props){
     return(
         <mesh position={props.position}>
                 <boxGeometry args={[1.75, 1.75, 0.3]} />
-                <meshStandardMaterial color={new Color(props.cid===pos?'rgb(36, 36, 36)' : 'white')}/>
+                <meshStandardMaterial color={new Color(props.cid===props.pos?'rgb(36, 36, 36)' : 'white')}/>
         </mesh>
     )
 }
