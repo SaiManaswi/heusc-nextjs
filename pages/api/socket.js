@@ -13,7 +13,9 @@ const SocketHandler = (req, res) => {
         socket.broadcast.emit('update-input', msg)
       })
       socket.on('position', pos =>{
-        socket.broadcast.emit('newpos', pos + 1)
+        pos = Number.parseInt(pos)
+        pos = (pos+1) % 40
+        socket.broadcast.emit('newpos', pos)
       })
     })
   }
