@@ -17,6 +17,7 @@ function Monopoly(props) {
             console.log("connected")
         })
         socket.on('newpos', e =>{
+            e = Number.parseInt(e)
             setState(e)
         })
     }
