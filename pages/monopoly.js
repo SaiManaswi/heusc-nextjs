@@ -22,7 +22,9 @@ function Monopoly(props) {
         })
     }
     const update=()=>{
-        socket.emit('position',pos)
+        let val = (pos+1) % 40;
+        setState(val);
+        socket.emit('position',val);
     }
     return (
         <div id="canvas-container" style={{ height: '600px' }}>
