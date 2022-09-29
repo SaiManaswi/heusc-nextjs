@@ -1,0 +1,10 @@
+.container{
+    background-color: #162B62;
+    color: aliceblue;
+    width: 25%;
+    position: absolute;
+    left: 5%;
+    padding: 1%;
+    top: 15%;
+    height: 75%;
+}

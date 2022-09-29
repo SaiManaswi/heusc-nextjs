@@ -47,6 +47,7 @@ function Monopoly(props) {
                 
             </Canvas>
             <Button onClick={update}>Click</Button>
+            <p style={{color: "aliceblue"}}>This uses Three.js for 3d design and socket.io to use websockets for multiplayer</p>
         </div>
     )
 }

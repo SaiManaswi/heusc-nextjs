@@ -1,35 +1,12 @@
-import Head from 'next/head'
-import { useState,useEffect } from 'react'
-import io from 'socket.io-client'
-let socket;
-
+import profile from '../styles/Profile.module.css'
 export default function Home(props) {
-  const [input, setInput] = useState('')
-
-  useEffect(() => {socketInitializer()}, [])
-
-  const socketInitializer = async () => {
-    await fetch('/api/socket');
-    socket = io()
-
-    socket.on('connect', () => {
-      console.log('connected')
-    })
-
-    socket.on('update-input', msg => {
-      setInput(msg)
-    })
-  }
-
-  const onChangeHandler = (e) => {
-    setInput(e.target.value)
-    socket.emit('input-change', e.target.value)
-  }
   return (
-    <input
-      placeholder="Type something"
-      value={input}
-      onChange={onChangeHandler}
-    />
+    <div className={profile.container}>
+      <p>Hi! My name is <b>Sai Manaswi.</b></p><br/>
+      <p>I am a student in KL University, Hyderabad. Currently studying <b>3rd year, Computer Scinence</b></p><br/>
+      <p>My Hobbies are solving codes, designing websites.</p><br/>
+      <p>This webite was designed in react using next.js framework.</p><br/>
+      <p>This project consists of do-list, made in progress version of monopoly game and a song in menu bar using async-fetch. </p>
+    </div>
   )
 }
