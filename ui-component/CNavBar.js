@@ -12,7 +12,7 @@ class CNavBar extends React.PureComponent{
     console.log("Nav Bar Rendered")
     super(props);
     this.state = {opened : false};
-    this.audio = new Audio('https://s2.naasongs.download/teqc69oze1zawc/Salute%20-%20%282008%29/%5BiSongs.info%5D%2002%20-%20Ninnena%20Nenu.mp3');
+    this.audio = new Audio();
   }
 
   render(){
