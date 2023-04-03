@@ -34,7 +34,7 @@ function New_colum(props) {
         console.log(inputList)
     };
     return (
-        <div className={mstyle.table}>
+        <div className={mstyle.table} onDragOver={e => {e.preventDefault();}}>
             <h2>{props.title}</h2>
             {
                 inputList.map((points) => {
