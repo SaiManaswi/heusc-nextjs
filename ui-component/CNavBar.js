@@ -12,7 +12,7 @@ class CNavBar extends React.PureComponent{
     console.log("Nav Bar Rendered")
     super(props);
     this.state = {opened : false};
-    this.audio = new Audio();
+    this.audio = new Audio('https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202012/04%20-%20Poola%20Rangadu%20(2012)/Poola%20Rangadu%20-%20SenSongsmp3.Co.mp3');
   }
 
   render(){
@@ -21,9 +21,15 @@ class CNavBar extends React.PureComponent{
       <Drawer
         opened={this.state.opened}
         onClose={() => this.setState({opened : false})}
-        styles={{
-          drawer: { backgroundColor: '#162B62', color: 'aliceblue' },
-        }}
+        styles={(theme)=>({
+          content:{
+            backgroundColor:'#162B62'
+          },
+          header:{
+            backgroundColor:'#162B62',
+            color:'aliceblue'
+          }
+        })}
         title="Menu"
         padding="xl"
         size='15%'

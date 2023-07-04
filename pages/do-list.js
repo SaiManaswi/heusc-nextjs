@@ -16,8 +16,8 @@ export default function list(props) {
                     To-do List
                 </h1>
                 <div className={mstyle.list_container}>
-                    <New_colum title='Plan to do' />
-                    <New_colum title='In Progress' />
+                    <New_colum title='Plan to do'/>
+                    <New_colum title='In Progress'/>
                     <New_colum title='Completed' />
                 </div>
             </main>
@@ -35,6 +35,7 @@ function New_colum(props) {
     };
     return (
         <div className={mstyle.table} onDragOver={e => {e.preventDefault();}}>
+            <h1>{props.point}</h1>
             <h2>{props.title}</h2>
             {
                 inputList.map((points) => {
