@@ -1,15 +1,7 @@
-import '../styles/globals.css'
-import Layout from '../ui-component/Layout.js'
+import '../src/styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Layout>
-        <Component {...pageProps}/>
-      </Layout>
-    </>
-  )
+  return <Component {...pageProps} />;
 }
 
-
-export default MyApp
+export default MyApp;

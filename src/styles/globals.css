@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+  background: #050002;
+  color: #f3f4f6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #050002 url('/chaos-red-bg.svg') center / cover no-repeat fixed;
+}
+
+body::before,
+body::after {
+  content: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.glass {
+  background: rgba(10, 10, 12, 0.28);
+  backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid rgba(255, 80, 90, 0.18);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
