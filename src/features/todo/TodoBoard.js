@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useState } from 'react';
 
 const columnsConfig = [
@@ -76,12 +75,7 @@ export default function TodoBoard() {
   };
 
   return (
-    <>
-      <Head>
-        <title>To-Do List</title>
-      </Head>
-
-      <main className="w-full">
+    <main className="w-full">
         <div className="mb-5 flex items-center justify-between gap-3">
           <h1 className="text-2xl font-semibold tracking-[-0.04em] text-white">To-do List</h1>
           <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-white/65">
@@ -111,7 +105,6 @@ export default function TodoBoard() {
           ))}
         </div>
       </main>
-    </>
   );
 }
 

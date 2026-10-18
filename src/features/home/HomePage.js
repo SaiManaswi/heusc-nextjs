@@ -3,7 +3,7 @@ import TodoBoard from '../todo/TodoBoard';
 
 const tabs = [
   { key: 'home' },
-  { key: 'todo' },
+  { key: 'work' },
 ];
 
 export default function HomePage({ initialTab = 'home' }) {
@@ -11,7 +11,7 @@ export default function HomePage({ initialTab = 'home' }) {
   const slideRefs = useRef({ home: null, todo: null });
 
   useEffect(() => {
-    const target = slideRefs.current[activeTab];
+    const target = slideRefs.current[activeTab] || slideRefs.current.todo;
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }
@@ -28,7 +28,7 @@ export default function HomePage({ initialTab = 'home' }) {
   return (
     <main className="relative z-10 h-screen overflow-hidden bg-transparent text-white">
       <div className="relative z-10 h-full w-full bg-transparent">
-        {activeTab === 'todo' && (
+        {activeTab === 'work' && (
           <button
             type="button"
             aria-label="Previous tab"
@@ -99,7 +99,7 @@ export default function HomePage({ initialTab = 'home' }) {
                 </div>
               </section>
 
-              <section ref={(node) => { slideRefs.current.todo = node; }} className="h-full min-w-full snap-start">
+              <section ref={(node) => { slideRefs.current.work = node; slideRefs.current.todo = node; }} className="h-full min-w-full snap-start">
                 <div className="h-full px-3 pt-6 pb-6 md:px-6 lg:px-8">
                   <TodoBoard />
                 </div>
